@@ -70,5 +70,34 @@ function expand_prompt_template {
         -e "s/%user/${user}/g"                                              \
         -e "s/%host/${host}/g"                                              \
         -e "s/%window/${window}/g"                                          \
+        -e "s/(%ck|%black)/$pblack/g"                                       \
+        -e "s/(%cb|%blue)/$pblue/g"                                         \
+        -e "s/(%cr|%red)/$pred/g"                                           \
+        -e "s/(%cm|%magenta)/$pmagenta/g"                                   \
+        -e "s/(%cg|%green)/$pgreen/g"                                       \
+        -e "s/(%cc|%cyan)/$pcyan/g"                                         \
+        -e "s/(%cy|%yellow)/$pyellow/g"                                     \
+        -e "s/(%cw|%white)/$pwhite/g"                                       \
+        -e "s/(%cn|%normal)/$pnormal/g"                                     \
+        -e "s/(%Ck|%bgblack)/$pbgblack/g"                                   \
+        -e "s/(%Cb|%bgblue)/$pbgblue/g"                                     \
+        -e "s/(%Cr|%bgred)/$pbgred/g"                                       \
+        -e "s/(%Cm|%bgmagenta)/$pbgmagenta/g"                               \
+        -e "s/(%Cg|%bggreen)/$pbggreen/g"                                   \
+        -e "s/(%Cc|%bgcyan)/$pbgcyan/g"                                     \
+        -e "s/(%Cy|%bgyellow)/$pbgyellow/g"                                 \
+        -e "s/(%Cw|%bgwhite)/$pbgwhite/g"                                   \
+        -e "s/(%Cn|%bgnormal)/$pbgnormal/g"                                 \
+        -e "s/(%B|%bold)/$pbold/g"                                          \
+        -e "s/(%b|%nobold)/$pnobold/g"                                      \
+        -e "s/(%I|%italic)/$pitalic/g"                                      \
+        -e "s/(%i|%noitalic)/$pnoitalic/g"                                  \
+        -e "s/(%U|%under)/$punder/g"                                        \
+        -e "s/(%u|%nounder)/$pnounder/g"                                    \
+        -e "s/(%R|%reverse)/$pinverse/g"                                    \
+        -e "s/(%r|%noreverse)/$pnoinverse/g"                                \
+        -e "s/(%S|%strike)/$pstrike/g"                                      \
+        -e "s/(%s|%nostrike)/$pnostrike/g"                                  \
+        -e "s/(%X|%reset)/$preset/g"                                        \
         -E
 }

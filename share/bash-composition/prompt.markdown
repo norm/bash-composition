@@ -66,3 +66,38 @@ Macros
 
     Replaced with the current 'window' when inside screen. To change the
     output of the macro, set `$PROMPT_WINDOW`.
+
+
+Terminal sequences
+------------------
+
+An ANSI compatible terminal supports colour and visual formatting effects.
+The following control these:
+
+*   `%B` or `%bold` turns bold on, `%b` or `%nobold` turns bold off
+*   `%I` or `%italic` turns italics on, `%i` or `%noitalic` turns italics off
+*   `%U` or `%under` turns underlining on, `%u` or `%nounder` turns 
+    underlining off
+*   `%R` or `%reverse` turns reverse video on, `%r` or `%noreverse` turns
+    reverse video off
+*   `%S` or `%strike` turns strike-through on, `%s` or `%nostrike` turns 
+    strike-through off
+*   `%ck` or `%black` sets the foreground colour to black
+*   `%cb` or `%blue` sets the foreground colour to blue
+*   `%cr` or `%red` sets the foreground colour to red
+*   `%cm` or `%magenta` sets the foreground colour to magenta
+*   `%cg` or `%green` sets the foreground colour to green
+*   `%cc` or `%cyan` sets the foreground colour to cyan
+*   `%cy` or `%yellow` sets the foreground colour to yellow
+*   `%cw` or `%white` sets the foreground colour to white
+*   `%cn` or `%normal` sets the foreground colour to its normal colour
+*   `%Ck` or `%bgblack` sets the background colour to black
+*   `%Cb` or `%bgblue` sets the background colour to blue
+*   `%Cr` or `%bgred` sets the background colour to red
+*   `%Cm` or `%bgmagenta` sets the background colour to magenta
+*   `%Cg` or `%bggreen` sets the background colour to green
+*   `%Cc` or `%bgcyan` sets the background colour to cyan
+*   `%Cy` or `%bgyellow` sets the background colour to yellow
+*   `%Cw` or `%bgwhite` sets the background colour to white
+*   `%Cn` or `%bgnormal` sets the background colour to its normal colour
+*   `%X` or `%reset` resets any terminal effects back to normal

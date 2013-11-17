@@ -28,6 +28,11 @@ Macros
     To change the maximum length of each individual directory, override the 
     variable `PWDN_MAX_WORD` (defaults to 10).
 
+*   `%host`
+
+    Replaced with the current hostname (without the domain name). To change
+    the output of the macro, set `$PROMPT_HOST`.
+
 *   `%user`
     
     Replaced with nothing if the current user is the same as `$DEFAULT_USER`,

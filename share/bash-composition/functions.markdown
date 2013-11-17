@@ -42,3 +42,16 @@ Paths
 *   `path_prepend` __directory__
     
     Adds __directory__ to the start of `$PATH` if it is not already an entry.
+
+
+Sourcing files
+--------------
+
+*   `source_or_warn` __file__
+
+    Try to source __file__, and output a warning message if it does not exist.
+
+*   `source_if_exists` __file__ [...]
+
+    Source each __file__ argument, ignoring them if they do not exist rather
+    than breaking.

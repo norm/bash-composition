@@ -39,7 +39,13 @@ function pwdn {
 function expand_prompt_template {
     local template="$1"
 
+    # %user macro
+    local user=''
+    [ "$USER" != "$DEFAULT_USER" ] \
+        && user="${PROMPT_USER:=${USER}@}"
+
     echo "$template" | sed                                                  \
         -e 's/%dir([0-9])/$(pwdn \1)/g'                                     \
+        -e "s/%user/${user}/g"                                              \
         -E
 }

@@ -27,3 +27,12 @@ Macros
 
     To change the maximum length of each individual directory, override the 
     variable `PWDN_MAX_WORD` (defaults to 10).
+
+*   `%user`
+    
+    Replaced with nothing if the current user is the same as `$DEFAULT_USER`,
+    and '__user__@' otherwise. Useful as a reminder when connected to a
+    different or shared account.
+
+    To change the output of the macro when the accounts are different, set
+    `$PROMPT_USER`. To always have the username, just use `$USER` instead.

@@ -25,6 +25,13 @@ source_if_exists ${BASH_BASE}/host/${HOST}/*
     || source_if_exists ${BASH_BASE}/subshell/*
 is_login=0
 
+# Check that the user has configured things.
+if [ "$DEFAULT_USER" = 'NOTCONFIGURED' ]; then
+    warn "** bash-composition is not correctly configured, to learn more read"
+    warn "   ~/share/bash-composition/usage.markdown"
+    echo ''
+fi
+
 # Set the prompts if templates are being used.
 [ -n "$PS1_TEMPLATE" ] \
     && PS1=$( expand_prompt_template "$PS1_TEMPLATE" )

@@ -5,6 +5,10 @@ Rather than adding your settings, variables, aliases, and functions to one big
 .bashrc file, bash-composition encourages many small files with one well
 defined purpose.
 
+If nothing else, you should create a file at `~/etc/bash/rc/user.sh` and
+use it to set `$DEFAULT_USER` to your normal user account (to see why,
+see the %user macro in `~/share/bash-composition/prompt.sh`).
+
 
 Locations
 ---------

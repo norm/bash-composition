@@ -24,3 +24,13 @@ source_if_exists ${BASH_BASE}/host/${HOST}/*
     && source_if_exists ${BASH_BASE}/login/*        \
     || source_if_exists ${BASH_BASE}/subshell/*
 is_login=0
+
+# Set the prompts if templates are being used.
+[ -n "$PS1_TEMPLATE" ] \
+    && PS1=$( expand_prompt_template "$PS1_TEMPLATE" )
+[ -n "$PS2_TEMPLATE" ] \
+    && PS2=$( expand_prompt_template "$PS2_TEMPLATE" )
+[ -n "$PS3_TEMPLATE" ] \
+    && PS3=$( expand_prompt_template "$PS3_TEMPLATE" )
+[ -n "$PS4_TEMPLATE" ] \
+    && PS4=$( expand_prompt_template "$PS4_TEMPLATE" )

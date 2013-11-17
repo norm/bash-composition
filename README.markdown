@@ -20,4 +20,6 @@ Documentation
 More documentation can be found in the `share/bash-composition` folder:
 
 *   `usage.markdown` explains the general usage of the framework
-*   `functions.markdown` explains what functions are provided
+*   `functions.markdown` details what functions are provided
+*   `prompt.markdown` details macros available for more conveniently
+    setting the prompt

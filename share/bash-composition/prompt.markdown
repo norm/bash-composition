@@ -19,6 +19,12 @@ Macros
     To change the output of the macro, set `$PROMPT_USERCHAR` and/or
     `$PROMPT_ROOTCHAR`.
 
+*   `%##`
+
+    Replaced with multiple symbols (as for `%#` above) that represent the
+    current depth of subshells. For example, logging in, then running bash
+    will give '%%', then running `su -` will give '%%#'.
+
 *   `%dir(n)`
 
     Replaced with the current working directory, to a depth of __(n)__

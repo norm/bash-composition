@@ -44,6 +44,11 @@ function expand_prompt_template {
     [ `id -u` == '0' ] \
         && char="${PROMPT_ROOTCHAR:=#}"
 
+    # %## macro
+    local chardepth=$(
+        echo "${PROMPT_SYMBOLS}${char}"
+    )
+
     # %host macro
     local host="${PROMPT_HOST:=${HOST}}"
     
@@ -53,6 +58,7 @@ function expand_prompt_template {
         && user="${PROMPT_USER:=${USER}@}"
 
     echo "$template" | sed                                                  \
+        -e "s/%##/${chardepth}/g"                                           \
         -e "s/%#/${char}/g"                                                 \
         -e 's/%dir([0-9])/$(pwdn \1)/g'                                     \
         -e "s/%domain/${domain}/g"                                          \

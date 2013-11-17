@@ -41,3 +41,8 @@ fi
     && PS3=$( expand_prompt_template "$PS3_TEMPLATE" )
 [ -n "$PS4_TEMPLATE" ] \
     && PS4=$( expand_prompt_template "$PS4_TEMPLATE" )
+
+# Add the current prompt symbol as a quick visual indicator of shell depth.
+[ `id -u` == '0' ]                                                      \
+    && export PROMPT_SYMBOLS="${PROMPT_SYMBOLS}${PROMPT_ROOTCHAR:=#}"   \
+    || export PROMPT_SYMBOLS="${PROMPT_SYMBOLS}${PROMPT_USERCHAR:=%}"

@@ -57,6 +57,11 @@ function expand_prompt_template {
     [ "$USER" != "$DEFAULT_USER" ] \
         && user="${PROMPT_USER:=${USER}@}"
 
+    # %window macro
+    local window=''
+    [ "$WINDOW" != '' ] \
+        && window="${PROMPT_WINDOW:=${WINDOW}}"
+    
     echo "$template" | sed                                                  \
         -e "s/%##/${chardepth}/g"                                           \
         -e "s/%#/${char}/g"                                                 \
@@ -64,5 +69,6 @@ function expand_prompt_template {
         -e "s/%domain/${domain}/g"                                          \
         -e "s/%user/${user}/g"                                              \
         -e "s/%host/${host}/g"                                              \
+        -e "s/%window/${window}/g"                                          \
         -E
 }

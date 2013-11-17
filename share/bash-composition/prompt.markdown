@@ -61,3 +61,8 @@ Macros
 
     To change the output of the macro when the accounts are different, set
     `$PROMPT_USER`. To always have the username, just use `$USER` instead.
+
+*   `%window`
+
+    Replaced with the current 'window' when inside screen. To change the
+    output of the macro, set `$PROMPT_WINDOW`.

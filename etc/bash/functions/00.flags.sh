@@ -10,3 +10,12 @@ else
     export INTERACTIVE=0
     must_be_interactive='return'
 fi
+
+# The current Operating System type (eg. Linux, Darwin, NetBSD)
+export HOSTOS=`uname`
+
+# The current host's name, in short form (without domain name).
+export HOST=`hostname -s`
+
+# The current domain name.
+export DOMAIN=`hostname | sed -e "s/${HOST}.//"`

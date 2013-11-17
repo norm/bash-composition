@@ -14,3 +14,9 @@ done
 for rc_file in $( echo ${BASH_BASE}/rc/* ); do
     source $rc_file
 done
+
+# Setup anything that is specific to the current location/hardware.
+source_if_exists ${BASH_BASE}/os/${HOSTOS}/*
+source_if_exists ${BASH_BASE}/arch/${HOSTTYPE}/*
+source_if_exists ${BASH_BASE}/domain/${DOMAIN}/*
+source_if_exists ${BASH_BASE}/host/${HOST}/*

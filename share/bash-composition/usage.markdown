@@ -14,6 +14,10 @@ Locations
     These files are controlled by bash-composition and so should be left
     alone.
 
+*   `~/etc/bash/functions/*`
+
+    Functions provided by bash-composition.
+
 *   `~/etc/bash/rc/*`
     
     User initialisation files. Normally, one for each group of related

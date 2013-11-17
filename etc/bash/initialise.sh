@@ -5,6 +5,11 @@
 
 BASH_BASE=${HOME}/etc/bash
 
+# Set up the basic functions/settings.
+for rc_file in $( echo ${BASH_BASE}/functions/* ); do
+    source $rc_file
+done
+
 # Do anything the user wants.
 for rc_file in $( echo ${BASH_BASE}/rc/* ); do
     source $rc_file

@@ -55,3 +55,24 @@ Sourcing files
 
     Source each __file__ argument, ignoring them if they do not exist rather
     than breaking.
+
+
+Checking for software
+---------------------
+
+*   `available` __program__
+    
+    If you need to perform actions only if a certain piece of software is
+    installed and in the `$PATH`, you can use available. A short and longer
+    example:
+
+        # use TextMate in preference
+        available mate \
+            && export VISUAL=mate
+
+        # I am a nerd.
+        available fortune && {
+            echo ''
+            fortune startrek
+            echo ''
+        }

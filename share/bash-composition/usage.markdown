@@ -5,22 +5,45 @@ Rather than adding your settings, variables, aliases, and functions to one big
 .bashrc file, bash-composition encourages many small files with one well
 defined purpose.
 
-If nothing else, you should create a file at `~/etc/bash/rc/user.sh` and
-use it to set `$DEFAULT_USER` to your normal user account (to see why,
-see the %user macro in `~/share/bash-composition/prompt.sh`).
+Startup files and other configuration is kept in `~/etc` wherever possible.
+Where software expects to use a 'dotfile' in the home directory to keep 
+settings, this will try to deflect it:
+
+*   If the config file can be changed via the environment, do so
+    (eg `INPUTRC=$HOME/etc/input` rather than `~/.inputrc`), or
+*   If the config file supports including other files, use a small stub file
+    to include files from `~/etc` (eg `~/.bashrc`), or
+*   Use a symbolic link to keep the original file in `~/etc`.
+
+Some other familiar unix hierarchy directories are also adopted:
+
+*   library files are expected to live in `~/lib`
+*   log/runtime files are expected to live in `~/var`
+*   documentation is expected to live in `~/share`
 
 
-Locations
----------
+Where to put your modifications
+-------------------------------
 
-*   `~/.bashrc`, `~/.bash_profile`, `~/etc/bash/initalise.sh`
+If you do nothing else, you should create a file at `~/etc/bash/rc/user.sh`
+and use it to set `$DEFAULT_USER` to your normal user account (to see why, see
+the %user macro in `~/share/bash-composition/prompt.sh`).
 
-    These files are controlled by bash-composition and so should be left
-    alone.
+*   `~/.bashrc`
+*   `~/.bash_profile`
+
+    __Not here.__
+
+    After installing bash-composition, these files will be replaced with a
+    simple invocation of `~/etc/bash/initialise.sh`. You should not modify
+    them futher, and if other software adds anything you should move it into
+    its own separate file as detailed below.
 
 *   `~/etc/bash/functions/*`
 
-    Functions provided by bash-composition.
+    Functions provided by bash-composition. If you find yourself extending
+    bash-composition (rather than writing personal settings), this is where
+    you should do it.
 
 *   `~/etc/bash/rc/*`
     

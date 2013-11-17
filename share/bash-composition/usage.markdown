@@ -48,3 +48,13 @@ Locations
 
     User initialisation files that are host specific. The directory __HOST__
     will match the output of `hostname -s`.
+
+*   `~/etc/bash/login/*`
+
+    User initialisation files that are only run in login shells, and not in
+    subshells.
+
+*   `~/etc/bash/subshell/*`
+
+    User initialisation files thata are only run in subshells, and not in
+    login shells.

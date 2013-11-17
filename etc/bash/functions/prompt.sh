@@ -39,6 +39,11 @@ function pwdn {
 function expand_prompt_template {
     local template="$1"
 
+    # %# macro
+    local char="${PROMPT_USERCHAR:=%}"
+    [ `id -u` == '0' ] \
+        && char="${PROMPT_ROOTCHAR:=#}"
+
     # %host macro
     local host="${PROMPT_HOST:=${HOST}}"
     
@@ -48,6 +53,7 @@ function expand_prompt_template {
         && user="${PROMPT_USER:=${USER}@}"
 
     echo "$template" | sed                                                  \
+        -e "s/%#/${char}/g"                                                 \
         -e 's/%dir([0-9])/$(pwdn \1)/g'                                     \
         -e "s/%domain/${domain}/g"                                          \
         -e "s/%user/${user}/g"                                              \

@@ -10,6 +10,15 @@ cryptic, value PS1 needs.
 Macros
 ------
 
+*   `%#`
+
+    Replaced with either a single % (if the account is not root), or
+    a single `#` if the account is root. Serves as a visual clue for accounts
+    using `su`.
+
+    To change the output of the macro, set `$PROMPT_USERCHAR` and/or
+    `$PROMPT_ROOTCHAR`.
+
 *   `%dir(n)`
 
     Replaced with the current working directory, to a depth of __(n)__

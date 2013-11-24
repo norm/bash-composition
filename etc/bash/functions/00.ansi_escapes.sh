@@ -62,3 +62,7 @@ pbgmagenta='\\[\\e[45m\\]'
 pbgcyan='\\[\\e[46m\\]'
 pbgwhite='\\[\\e[47m\\]'
 pbgnormal='\\[\\e[49m\\]'
+
+# Start/finish set xterm title sequence
+xtitlestart='\\[\\e]0;'
+xtitlefinish='\\007\\]'

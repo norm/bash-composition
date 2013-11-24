@@ -76,3 +76,7 @@ Checking for software
             fortune startrek
             echo ''
         }
+
+*   `need` __program__
+
+    The same as `available`, but issues a warning if the program is not found.

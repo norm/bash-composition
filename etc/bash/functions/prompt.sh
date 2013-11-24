@@ -49,6 +49,9 @@ function expand_prompt_template {
         echo "${PROMPT_SYMBOLS}${char}"
     )
 
+    # %domain macro
+    local domain="${PROMPT_DOMAIN:=${DOMAIN}}"
+    
     # %host macro
     local host="${PROMPT_HOST:=${HOST}}"
     

@@ -39,6 +39,11 @@ the %user macro in `~/share/bash-composition/prompt.sh`).
     them futher, and if other software adds anything you should move it into
     its own separate file as detailed below.
 
+*   `~/etc/bash/defaults/*`
+
+    Default settings provided by bash-composition. You can override these 
+    by adding files to the the `~/etc/bash/rc` directory.
+
 *   `~/etc/bash/functions/*`
 
     Functions provided by bash-composition. If you find yourself extending

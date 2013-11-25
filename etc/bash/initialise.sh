@@ -28,6 +28,10 @@ source_if_exists ${BASH_BASE}/host/${HOST}/*
     || source_if_exists ${BASH_BASE}/subshell/*
 is_login=0
 
+# Setup bash completion.
+[ -n "$BASH_COMPLETION" ] \
+    && source $BASH_COMPLETION
+
 # Check that the user has configured things.
 if [ "$DEFAULT_USER" = 'NOTCONFIGURED' ]; then
     warn "** bash-composition is not correctly configured, to learn more read"

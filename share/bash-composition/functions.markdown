@@ -1,6 +1,16 @@
 Functions provided by bash-composition
 ======================================
 
+Bash completion
+---------------
+
+If you have [bash-completion][bash-completion] installed, you can have it
+included by setting the variable `BASH_COMPLETION` to the pathname of the
+script.
+
+[bash-completion]: http://bash-completion.alioth.debian.org
+
+
 Interactive only
 ----------------
 

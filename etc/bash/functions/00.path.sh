@@ -31,11 +31,3 @@ function manpath_append {
             && MANPATH="${MANPATH}:${directory}"
     fi
 }
-
-path_append '/sbin'
-path_append '/bin'
-path_append '/usr/local/bin'
-path_append '/usr/local/sbin'
-path_append '/usr/sbin'
-path_append '/usr/bin'
-path_prepend "${HOME}/bin"

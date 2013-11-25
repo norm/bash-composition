@@ -3,6 +3,7 @@
 # This is the master initialisation (rc) file for bash.
 
 BASH_BASE=${HOME}/etc/bash
+warnings_issued=0
 
 # Set up the basic functions/settings.
 for rc_file in $( echo ${BASH_BASE}/functions/* ); do
@@ -48,3 +49,6 @@ fi
 [ `id -u` == '0' ]                                                      \
     && export PROMPT_SYMBOLS="${PROMPT_SYMBOLS}${PROMPT_ROOTCHAR:=#}"   \
     || export PROMPT_SYMBOLS="${PROMPT_SYMBOLS}${PROMPT_USERCHAR:=%}"
+
+[ $warnings_issued ] \
+    && echo ''

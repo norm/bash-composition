@@ -13,6 +13,10 @@ function print {
 function warn {
     $must_be_interactive
     
+    (( warnings_issued += 1 ))
+    [ $warnings_issued = 1 ] \
+        && echo ''
+    
     local string="$@"
     print "${bold}${red}${string}"
 }

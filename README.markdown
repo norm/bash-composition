@@ -9,9 +9,10 @@ file with all of the things meshed together.
 Installing
 ----------
 
-Clone this repository, and then run `make` from within. *WARNING* This will
-overwrite your `~/.bashrc` and `~/.bash_profile` file, so make sure you have
-backed them up first.
+Clone this repository, and then run `make` from within. 
+
+**WARNING: This will overwrite your `~/.bashrc` and `~/.bash_profile`
+file, so make sure you have backed them up first.**
 
 
 Documentation

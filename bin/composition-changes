@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# github:bin/composition-changes
+
+DIRS_TO_CHECK="etc bin"
+URL_TEMP_FILE=`mktemp /tmp/composition-changes.XXXXX`
+DIFF_TEMP_FILE=`mktemp /tmp/composition-changes.XXXXX`
+SHOW_DIFFS=0
+
+[ "$1" = "-d" ] \
+    && SHOW_DIFFS=1
+
+function check_files_for_updates {
+    local local_file repo filename file_md5 url_md5 raw_url
+
+    read local_file repo filename
+    while [ -n "$local_file" ]; do
+        file_md5=`md5 -q $local_file`
+
+        # this is the default repo
+        if [ -z "$filename" ]; then
+            filename="$repo"
+            repo='norm/bash-composition'
+        fi
+
+        # abort early when missing information
+        if [ -z "$filename" -o -z "$repo" ]; then
+            echo "${local_file}: matched by error?"
+            break
+        fi
+
+        raw_url="https://raw.github.com/${repo}/master/${filename}"
+        curl -fs $raw_url > $URL_TEMP_FILE
+
+        if [ $? = 0 ]; then
+            url_md5=`md5 -q $URL_TEMP_FILE`
+
+            if [ "$url_md5" != "$file_md5" ]; then
+                if [ $SHOW_DIFFS ]; then
+                    echo "${filename}:"
+                    diff -U1 $local_file $URL_TEMP_FILE > $DIFF_TEMP_FILE
+                    local lines=`cat $DIFF_TEMP_FILE | wc -l`
+                    tail -n $(( lines-3 )) $DIFF_TEMP_FILE
+                else
+                    echo "${local_file}: out of date"
+                    echo "    ${raw_url}"
+                fi
+                echo ''
+            fi
+        else
+            echo "${local_file}: error fetching from github"
+        fi
+
+        read local_file repo filename
+    done
+}
+
+
+pushd $HOME >/dev/null
+
+for dir in $DIRS_TO_CHECK; do
+    find $dir -type f -print0               \
+        | xargs -0 grep '^# github:'        \
+        | sed -e 's/# github//'             \
+        | tr ':' ' '                        \
+        | check_files_for_updates
+done
+popd >/dev/null

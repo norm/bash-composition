@@ -22,12 +22,31 @@ Some other familiar unix hierarchy directories are also adopted:
 *   documentation is expected to live in `~/share`
 
 
-Where to put your modifications
--------------------------------
+Customising your settings
+-------------------------
 
 If you do nothing else, you should create a file at `~/etc/bash/rc/user.sh`
 and use it to set `$DEFAULT_USER` to your normal user account (to see why, see
 the %user macro in `~/share/bash-composition/prompt.sh`).
+
+It is worth adding a marker line to each setting file that contains the 
+name of the GitHub repository and the filename delimited by colons, like so:
+
+    # github:norm/homedir:etc/bash/rc/user.sh
+
+This allows two things:
+
+1.  The provided `composition-changes` script can check to see if the file is
+    up-to-date with the last push to GitHub (useful if you maintain this
+    across many machines)
+2.  Other people can borrow your settings by copying your file rather than 
+    copying and pasting individual lines, effectively "following" your 
+    settings or useful scripts without having to clone/fork your entire
+    dotfiles repository.
+
+
+Where to put your modifications
+-------------------------------
 
 *   `~/.bashrc`
 *   `~/.bash_profile`
@@ -90,3 +109,30 @@ the %user macro in `~/share/bash-composition/prompt.sh`).
 
     User initialisation files thata are only run in subshells, and not in
     login shells.
+
+
+Borrowing other people's files
+------------------------------
+
+If you find an individual setting or script in someone else's dotfiles
+repository that you want to copy wholesale, it is recommended that you keep
+their github marker intact even if you then check it into your repository.
+This way the `composition-changes` script will check for changes inside their
+repository and not yours.
+
+
+Checking for updates
+--------------------
+
+You should regularly check for updates/changes to the files in your home
+directory, for the following reasons:
+
+*   You may have edited a setting without remembering to check it into your
+    own repository
+*   There may have been an update to the bash-composition framework
+*   Any other settings files or scripts you have copied from others may have
+    been updated
+
+This is done by running `composition-changes`. Make sure you have markers
+(explained in "Customising your settings") in any of your scripts or settings
+files.

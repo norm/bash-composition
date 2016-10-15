@@ -17,6 +17,13 @@ bold="\e[1m"
 cyan="\e[36m"
 magenta="\e[35m"
 reset="\e[0m"
+
+trap cleanup EXIT
+
+function cleanup {
+    rm -f $URL_TEMP_FILE
+}
+
 function check_files_for_updates {
     local local_file repo filename file_md5 url_md5 raw_url
 

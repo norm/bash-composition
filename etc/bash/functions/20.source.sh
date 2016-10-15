@@ -23,3 +23,15 @@ function source_if_exists {
         file="$1"
     done
 }
+
+# Source any scripts from a directory tree that allows for customisation
+# based upon computer-specific flags such as hostname.
+function source_init_tree {
+    local dir="$1"
+
+    source_if_exists ${dir}/*.sh
+    source_if_exists ${dir}/os-${HOSTOS}/*.sh
+    source_if_exists ${dir}/arch-${HOSTTYPE}/*.sh
+    source_if_exists ${dir}/domain-${DOMAIN}/*.sh
+    source_if_exists ${dir}/host-${HOST}/*.sh
+}

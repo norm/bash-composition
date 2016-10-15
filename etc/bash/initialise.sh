@@ -11,22 +11,18 @@ for rc_file in $( echo ${BASH_BASE}/functions/* ); do
 done
 
 # Set up defaults.
-source_if_exists ${BASH_BASE}/defaults/*
+source_init_tree ${BASH_BASE}/defaults
 
 # Setup anything the user wants.
-source_if_exists ${BASH_BASE}/rc/*
-
-# Setup anything that is specific to the current location/hardware.
-source_if_exists ${BASH_BASE}/os/${HOSTOS}/*
-source_if_exists ${BASH_BASE}/arch/${HOSTTYPE}/*
-source_if_exists ${BASH_BASE}/domain/${DOMAIN}/*
-source_if_exists ${BASH_BASE}/host/${HOST}/*
+source_init_tree ${BASH_BASE}/rc
 
 # Setup anything exclusive to login or subshells.
-[ $is_login ] \
-    && source_if_exists ${BASH_BASE}/login/*        \
-    || source_if_exists ${BASH_BASE}/subshell/*
-is_login=0
+if [ $is_login ]; then
+    source_init_tree ${BASH_BASE}/login
+    is_login=0
+else
+    source_init_tree ${BASH_BASE}/subshell
+fi
 
 # Setup bash completion.
 [ -n "$BASH_COMPLETION" ] \

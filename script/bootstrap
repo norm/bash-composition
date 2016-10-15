@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Install files into the user's home directory.
+
+[ -f $HOME/.bash_profile ] \
+    && mv $HOME/.bash_profile{,.bak}
+[ -f $HOME/.bashrc ] \
+    && mv $HOME/.bashrc{,.bak}
+
+cp bash_profile $HOME/.bash_profile
+cp bashrc $HOME/.bashrc
+
+mkdir -p $HOME/var
+rsync -a --itemize-changes bin etc share $HOME

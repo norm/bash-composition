@@ -3,7 +3,7 @@
 
 DIRS_TO_CHECK="etc bin"
 URL_TEMP_FILE=`mktemp /tmp/composition-changes.XXXXX`
-SHOW_DIFFS=0
+SHOW_DIFFS="${COMPOSITION_DIFFS:-0}"
 
 [ "$1" = "-d" ] \
     && SHOW_DIFFS=1
@@ -43,7 +43,7 @@ function check_files_for_updates {
             url_md5=`md5 -q $URL_TEMP_FILE`
 
             if [ "$url_md5" != "$file_md5" ]; then
-                if [ $SHOW_DIFFS ]; then
+                if [ $SHOW_DIFFS -gt 0 ]; then
                     printf "${cyan}${filename}:${reset}\n"
                     $DIFF -U2 $URL_TEMP_FILE $local_file | tail -n +3
                     printf "${cyan}----------------${reset}\n"

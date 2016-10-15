@@ -27,7 +27,7 @@ function check_files_for_updates {
             break
         fi
 
-        raw_url="https://raw.github.com/${repo}/master/${filename}"
+        raw_url="https://raw.githubusercontent.com/${repo}/master/${filename}"
         curl -fs $raw_url > $URL_TEMP_FILE
 
         if [ $? = 0 ]; then

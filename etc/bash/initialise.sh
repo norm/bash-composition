@@ -46,9 +46,9 @@ fi
     && PS4=$( expand_prompt_template "$PS4_TEMPLATE" )
 
 # Add the current prompt symbol as a quick visual indicator of shell depth.
-[ `id -u` == '0' ]                                                      \
+[ `id -u` -eq 0 ]                                                       \
     && export PROMPT_SYMBOLS="${PROMPT_SYMBOLS}${PROMPT_ROOTCHAR:=#}"   \
     || export PROMPT_SYMBOLS="${PROMPT_SYMBOLS}${PROMPT_USERCHAR:=%}"
 
-[ $warnings_issued ] \
+[ $warnings_issued -gt 0 -a $INTERACTIVE -gt 0 ] \
     && echo ''

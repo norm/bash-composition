@@ -8,6 +8,15 @@ SHOW_DIFFS=0
 [ "$1" = "-d" ] \
     && SHOW_DIFFS=1
 
+type -t colordiff >/dev/null    \
+    && DIFF=colordiff           \
+    || DIFF=diff
+
+# ANSI sequences
+bold="\e[1m"
+cyan="\e[36m"
+magenta="\e[35m"
+reset="\e[0m"
 function check_files_for_updates {
     local local_file repo filename file_md5 url_md5 raw_url
 
@@ -35,16 +44,17 @@ function check_files_for_updates {
 
             if [ "$url_md5" != "$file_md5" ]; then
                 if [ $SHOW_DIFFS ]; then
-                    echo "${filename}:"
-                    diff -U1 $local_file $URL_TEMP_FILE | tail -n +3
+                    printf "${cyan}${filename}:${reset}\n"
+                    $DIFF -U2 $URL_TEMP_FILE $local_file | tail -n +3
+                    printf "${cyan}----------------${reset}\n"
                 else
-                    echo "${local_file}: out of date"
-                    echo "    ${raw_url}"
+                    printf "${cyan}${local_file}: out of date${reset}\n"
+                    echo "${raw_url}"
                 fi
                 echo ''
             fi
         else
-            echo "${local_file}: error fetching from github"
+            printf "${bold}${magenta}Error fetching ${raw_url}${reset}\n\n"
         fi
 
         read local_file repo filename

@@ -11,4 +11,4 @@ cp bash_profile $HOME/.bash_profile
 cp bashrc $HOME/.bashrc
 
 mkdir -p $HOME/var
-rsync -a --itemize-changes bin etc share $HOME
+rsync -a --itemize-changes bin etc lib share var $HOME

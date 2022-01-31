@@ -14,6 +14,9 @@ fi
 # The current Operating System type (eg. Linux, Darwin, NetBSD)
 export HOSTOS=`uname`
 
+# The current machine architecture
+export HOSTARCH=`uname -m`
+
 # The current host's name, in short form (without domain name).
 export HOST=`hostname -s`
 

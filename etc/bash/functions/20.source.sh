@@ -31,6 +31,7 @@ function source_init_tree {
 
     source_if_exists ${dir}/*.sh
     source_if_exists ${dir}/os-${HOSTOS}/*.sh
+    source_if_exists ${dir}/os-${HOSTOS}-${HOSTARCH}/*.sh
     source_if_exists ${dir}/arch-${HOSTTYPE}/*.sh
     source_if_exists ${dir}/domain-${DOMAIN}/*.sh
     source_if_exists ${dir}/host-${HOST}/*.sh

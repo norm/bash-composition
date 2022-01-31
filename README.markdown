@@ -11,10 +11,27 @@ and easily knowing what changes they have made that you don't yet have.
 
 ## Installing
 
-Clone this repository, `cd` into your checkout, and run `./script/bootstrap`.
+Clone this repository, `cd` into your checkout, and run
+`./script/update install`.
 
 **WARNING**: This will overwrite your `~/.bashrc` and `~/.bash_profile`,
 moving your original files to `~/.bashrc.bak` and `~/.bash_profile.bak`.
+
+
+## Updating
+
+Any changes to this repo can be safely applied later by updating your local
+checkout, and running `./script/update` again. Any local changes you have 
+made to these files will not be overwritten.
+
+    # install updates
+    ./script/update
+
+    # if local changes, see what they are
+    ./script/update diff
+
+    # force overwriting
+    ./script/update install
 
 
 ## Documentation

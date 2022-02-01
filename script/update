@@ -50,7 +50,10 @@ function update_file {
 
         if [ "$oldsha" == "$newsha" ]; then
             # file is same
-            verbose "    $source"
+            verbose "    $dest"
+        elif [ "$oldsha" == "$value" ]; then
+            # file is untouched and can be replaced
+            install_file "$source" "$dest"
         else
             # file has local changes
             if [ $install -gt 0 ]; then
